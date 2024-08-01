@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from '../store/store';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 function Main() {
@@ -25,19 +26,24 @@ function Main() {
 
     const startTranscribing = async() => {
         if (isValidLink) {
+            toast.error('API key not found',{
+                theme: "colored",
+                autoClose: 5000,
+                progress: undefined,
+    
+            })
             setLoading(true);
             setTimeout(() => {
                 setLoading(false);
                 navigate('/transcript')
             }, 3000);
             
-            // axios.post('/process-video', { link , language:'English' },{ responseType: 'blob' }).then((response) => {
-            // const url = URL.createObjectURL(response.data.output_video);
-            
-            //  setResponse({transcription: response.data.transcription, translated_text: response.data.translated_text, output_video: url})
-
-            // }).catch((error) => {
-            // })
+        }else{
+            toast.error('Invalid Link',{
+                theme: "colored",
+                autoClose: 5000,
+                progress: undefined,
+            })
         }
     };
 
