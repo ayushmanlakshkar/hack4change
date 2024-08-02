@@ -33,8 +33,13 @@ pip install python/requirements.txt
 ```
 python python/app.py
 ```
+<p>3. To install frontend dependencies</p>
 
-<p>3. To run front end</p>
+```
+npm install
+```
+
+<p>4. To run front end</p>
 
 ```
 npm start
